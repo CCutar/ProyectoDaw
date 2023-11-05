@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="UTF-8">
+<head>
+    <h1>Subir y Validar Tamaño de Imagen</h1>
+</head>
+<body>
+    <form action="ValidacionImagenes.php" method="POST" enctype="multipart/form-data">
+        <!-- Formulario para subir imágenes -->
+        <input id="foto" name="foto" accept=".jpeg,.jpg" type="file" onchange="ValidarImagen(this);" />
+        <!-- Campo de entrada de archivo para seleccionar imágenes -->
+        <img id="imagenMostrada" src="" style="max-width: 100%; max-height: 400px;">
+    </form>
+    <script src="ValidacionImagenes.js"></script>
+</body>
+</html>
