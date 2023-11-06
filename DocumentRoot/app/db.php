@@ -6,10 +6,12 @@ $db_pass = 'super';
 $db_name = 'testdatabase';
 
 
-// Conexión a la base de datos
-$con = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
-
-if (!$con) {
-    die('Error al conectar a la base de datos: ' . mysqli_connect_error());
-}
+try {
+    // Conexión a la base de datos
+    $pdo = new PDO("mysql:host=$db_host;dbname=$db_name", $db_user, $db_pass);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    } catch (PDOException $e) {
+        echo "Error de conexión a la base de datos: " . $e->getMessage();
+    }
+    
 ?>
