@@ -6,7 +6,7 @@ include('db.php');
 $username = $_POST['name'];
 $password = $_POST['password'];
 // Validar las credenciales (esto es muy básico, se debe mejorar)
-$query = "SELECT * FROM usuarios WHERE username ='$username' AND pass ='$password'";
+$query = "SELECT * FROM email, contrasena WHERE email ='$username' AND contraseña ='$password'";
 $result = mysqli_query($con, $query);
 if (mysqli_num_rows($result) == 1) {
     // Inicio de sesión exitoso
@@ -17,4 +17,3 @@ if (mysqli_num_rows($result) == 1) {
     header('Location: index.php?fallo=true');
     die();
 }
-?>

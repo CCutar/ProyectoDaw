@@ -5,7 +5,6 @@ $db_user = 'super';
 $db_pass = 'super';
 $db_name = 'testdatabase';
 
-
 // Conexión a la base de datos
 $con = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
 
