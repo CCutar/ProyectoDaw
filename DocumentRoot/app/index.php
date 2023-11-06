@@ -35,11 +35,11 @@
         </div>
         <div class="form-floating">
           <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password">
-          <label for="floatingPassword">Contraseña</label>
+          <label for="floatingPassword">Password</label>
         </div>
         <div class="checkbox mb-3">
           <label>
-            <input type="checkbox" value="remember-me"> Recuerdame
+            <input type="checkbox" value="remember-me">Recuerdame
           </label>
         </div>
         <button class="w-100 btn btn-lg btn-primary" type="submit">Iniciar sesión</button>
