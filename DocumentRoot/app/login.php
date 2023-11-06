@@ -3,6 +3,7 @@
 include('db.php');
 
 
+
     // Recuperar los datos del formulario
     $username = htmlspecialchars($_POST['name']);
     $pass = htmlspecialchars($_POST['password']);
@@ -30,5 +31,3 @@ try {
     // Manejar errores de conexión o consulta
     echo "Error: " . $e->getMessage();
 }
-
-
