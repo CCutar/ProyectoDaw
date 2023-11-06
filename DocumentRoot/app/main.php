@@ -59,23 +59,28 @@ session_start();
 
         </section>
     </div>
-
-
+    <div class="container text-center">
+    <h1>HOME</h1>
+    </div>
     <!-- Contenido principal -->
     <div class="content" style="margin-left: 20%;">
         <div class="grid-container">
     
             <div class="top-left">
-                <h1>Esquina izquierda top </h1>
+                <h2>Productos Populares</h2>
+                <img src="http://2.bp.blogspot.com/_QiCa_HtqEag/TBenazjFF0I/AAAAAAAAAAM/Hvp5sAJwcwE/s1600/1.jpg" alt="imagen">
             </div>
             <div class="top-right">
-                <h1>Esquina derecha top </h1>
+                <h2>Ventas mensuales </h2>
+                <img src="http://2.bp.blogspot.com/_QiCa_HtqEag/TBenazjFF0I/AAAAAAAAAAM/Hvp5sAJwcwE/s1600/1.jpg" alt="imagen2">
             </div>
             <div class="bottom-left">
-                <h1>Esquina izquierda bot </h1>
+                <h2>Ventas Anuales </h2>
+                <img src="http://2.bp.blogspot.com/_QiCa_HtqEag/TBenazjFF0I/AAAAAAAAAAM/Hvp5sAJwcwE/s1600/1.jpg" alt="">
             </div>
             <div class="bottom-right">
-                <h1>Esquina derecha bot </h1>
+                <h2>Ventas por países </h2>
+                <img src="http://2.bp.blogspot.com/_QiCa_HtqEag/TBenazjFF0I/AAAAAAAAAAM/Hvp5sAJwcwE/s1600/1.jpg" alt="">
             </div>
         </div>
     </div>
