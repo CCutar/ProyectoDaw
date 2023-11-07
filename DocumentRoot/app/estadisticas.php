@@ -136,7 +136,6 @@ session_start();
                     <td>90</td>
                     <td>$6,000</td>
                 </tr>
-                <!-- Agrega más filas con información de productos aquí -->
             </tbody>
         </table>
     </div>

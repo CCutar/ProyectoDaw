@@ -1,16 +1,20 @@
 <?php
-// Configuración de la base de datos
-$db_host = 'mariadb';
-$db_user = 'super';
-$db_pass = 'super';
-$db_name = 'testdatabase';
+class Connection {
+    private $db_host = 'mariadb';
+    private $db_user = 'super';
+    private $db_pass = 'super';
+    private $db_name = 'testdatabase';
 
-try {
-// Conexión a la base de datos
-$pdo = new PDO("mysql:host=$db_host;dbname=$db_name", $db_user, $db_pass);
-$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    echo "Error de conexión a la base de datos: " . $e->getMessage();
+    public $pdo;
+
+    public function __construct() {
+        try {
+            $this->pdo = new PDO("mysql:host=$this->db_host;dbname=$this->db_name", $this->db_user, $this->db_pass);
+            $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch (PDOException $e) {
+            echo "Error de conexión a la base de datos: " . $e->getMessage();
+        }
+    }
 }
 
 ?>
