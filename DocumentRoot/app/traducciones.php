@@ -36,7 +36,7 @@
     </style>
 </head>
 <body>
-<!-- <div class="sidebar sticky-top">
+<div class="sidebar">
         <h1>Backoffice</h1>
         <div class="info-menu-lateral">
             <img class="logo-menu-lateral" src="https://www.logomaker.com/api/main/images/1j+ojFVDOMkX9Wytexe43D6kh...OJqBBPmhrFwXs1M3EMoAJtliklh...Rs9...8+ " alt="Logo de la empresa" width="95" height="57">
@@ -54,8 +54,8 @@
             <a href="kill.php"><i class="fas fa-cog"></i> LOG OUT</a>
 
         </section>
-    </div> -->
-    <div class="traducciones" style="margin-left: 20%">
+    </div>
+    <div class="traducciones" style="margin-left: 36%">
     <h1>Lista de Traducciones</h1>
     
     <form method="POST" action="controladortraducciones.php">
@@ -73,9 +73,9 @@
     <table border="1">
         <tr>
             <th>ID</th>
-            <th>Texto Original</th>
-            <th>Idioma</th>
             <th>Traducción</th>
+            <th>Original</th>
+            <th>Idioma</th>
             <th>Actualizar</th>
         </tr>
         <?php
