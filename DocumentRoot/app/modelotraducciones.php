@@ -34,6 +34,8 @@ class Traducciones {
 
     function agregarTraduccion() {
 
+
+        //método para un futuro añadir nuevos campos que traducir
         try {
 
             $query = "UPDATE TraduccionIdiomas SET Traduccion = :traduccion WHERE traduccion_id = :idtextooriginal AND idiomas_id = :ididioma";
@@ -46,35 +48,11 @@ class Traducciones {
             $stmt->bindParam(':ididioma', $this->$ididioma, PDO::PARAM_STR);
             
             $stmt->execute();
-        
-            echo "Traducció realizada";
 
         } catch (PDOException $e) {
             // Manejar errores de conexión o consulta
             echo "Error: " . $e->getMessage();
         }
-    }
-
-    function mostrarTraduccioID($id){
-
-        try {    
-            $query = "SELECT Traduccion FROM TraduccionIdiomas WHERE ID = :idtraduccion";
-            $pdo = self::crearConexion();
-            $stmt = $pdo->prepare($query);
-        
-            // Enlazar los parámetros
-            $stmt->bindParam(':idtraduccion', $id, PDO::PARAM_STR);
-            
-            
-            $stmt->execute();
-            return $stmt->fetch();
-            
-
-        } catch (PDOException $e) {
-            // Manejar errores de conexión o consulta
-            echo "Error: " . $e->getMessage();
-        }
-
     }
 
     public static function mostrarTraducciones() {
@@ -115,7 +93,6 @@ class Traducciones {
     public function actualizarTraducciones() {
         
         try {
-            echo "Actualizando Traducciones";
             $query = "UPDATE TraduccionIdiomas 
             SET `Traduccion`= :traduccion 
             WHERE ID = :idtraduccion";
