@@ -101,7 +101,7 @@ session_start();
         <ul>
             <li><a href="main.php"><i class="fas fa-home"></i> Inicio</a></li>
             <li><a href="estadisticas.php"><i class="fas fa-chart-bar"></i>Estadisticas</a></li>
-            <li><a href="#"><i class="fas fa-users"></i> Productos</a></li>
+            <li><a href="pageProduct.php"><i class="fas fa-users"></i> Productos</a></li>
             <li><a href="#"><i class="fas fa-cog"></i> Reclamaciones</a></li>
             <li><a href="#"><i class="fas fa-cog"></i> Usuarios</a></li>
         </ul>

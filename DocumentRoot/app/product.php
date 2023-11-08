@@ -3,13 +3,14 @@
     class Product {
         private $connection;
     
-        public function __construct($connection) {
-            $this->connection = $connection;
+        public function __construct() {
+            $this->connection = new Connection();
         }
-    
+        
+
         public function getProduct() {
             try {
-                $query = "SELECT id, nombre_producto, descripcion_producto, precio, margen_producto FROM producto";
+                $query = "SELECT * FROM producto";
                 $stmt = $this->connection->pdo->query($query);
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
             } catch (PDOException $e) {

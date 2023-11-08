@@ -80,15 +80,15 @@
         <?php
         include('product.php');
         $product = new Product();
-        $produts = $product->getProduct();
-        if ($productos) {
+        $products = $product->getProduct();
+        if ($products) {
             foreach ($products as $product) {
                 echo "<tr>";
-                echo "<td>" . $producto['id'] . "</td>";
-                echo "<td>" . $producto['nombre_producto'] . "</td>";
-                echo "<td>" . $producto['descripcion_producto'] . "</td>";
-                echo "<td>" . $producto['precio'] . "</td>";
-                echo "<td>" . $producto['margen_producto'] . "</td>";
+                echo "<td>" . $product['id'] . "</td>";
+                echo "<td>" . $product['nombre_producto'] . "</td>";
+                echo "<td>" . $product['descripcion_producto'] . "</td>";
+                echo "<td>" . $product['precio'] . "</td>";
+                echo "<td>" . $product['margen_porcentaje'] . "</td>";
                 echo "</tr>";
             }
         } else {
