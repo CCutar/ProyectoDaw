@@ -1,9 +1,5 @@
-<?php
-session_start();
-?>
-
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=, initial-scale=1.0">
@@ -38,6 +34,18 @@ session_start();
             margin-bottom: 10px;
         }
     </style>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        
+        th, td {
+            border: 1px solid red;
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
 </head>
 <body>
 <div class="sidebar">
@@ -59,31 +67,34 @@ session_start();
 
         </section>
     </div>
-    <div class="container text-center">
-    <h1>HOME</h1>
-    </div>
-    <!-- Contenido principal -->
-    <div class="content" style="margin-left: 20%;">
-        <div class="grid-container">
-    
-            <div class="top-left">
-                <h2>Productos Populares</h2>
-                <img src="http://2.bp.blogspot.com/_QiCa_HtqEag/TBenazjFF0I/AAAAAAAAAAM/Hvp5sAJwcwE/s1600/1.jpg" alt="imagen">
-            </div>
-            <div class="top-right">
-                <h2>Ventas mensuales </h2>
-                <img src="https://mktefa.ditrendia.es/hubfs/Imagen7.png" alt="imagen2">
-            </div>
-            <div class="bottom-left">
-                <h2>Ventas Anuales </h2>
-                <img src="http://2.bp.blogspot.com/_QiCa_HtqEag/TBenazjFF0I/AAAAAAAAAAM/Hvp5sAJwcwE/s1600/1.jpg" alt="">
-            </div>
-            <div class="bottom-right">
-                <h2>Ventas por países </h2>
-                <img src="http://2.bp.blogspot.com/_QiCa_HtqEag/TBenazjFF0I/AAAAAAAAAAM/Hvp5sAJwcwE/s1600/1.jpg" alt="">
-            </div>
-        </div>
-    </div>
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <section>
+    <h1>Lista de Productos</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Nombre del Producto</th>
+            <th>Descripción</th>
+            <th>Precio</th>
+            <th>Margen Porcentaje</th>
+        </tr>
+        <?php
+        include('product.php');
+        $product = new Product();
+        $produts = $product->getProduct();
+        if ($productos) {
+            foreach ($products as $product) {
+                echo "<tr>";
+                echo "<td>" . $producto['id'] . "</td>";
+                echo "<td>" . $producto['nombre_producto'] . "</td>";
+                echo "<td>" . $producto['descripcion_producto'] . "</td>";
+                echo "<td>" . $producto['precio'] . "</td>";
+                echo "<td>" . $producto['margen_producto'] . "</td>";
+                echo "</tr>";
+            }
+        } else {
+            echo "<tr><td colspan='5'>No se encontraron productos.</td></tr>";
+        }
+        ?>
+    </section>
 </body>
 </html>

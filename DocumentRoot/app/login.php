@@ -1,6 +1,6 @@
 <?php
 // Incluir el archivo de conexión a la base de datos (db.php)
-include('db.php');
+include('connection.php');
 
 class Login {
     private $connection;
