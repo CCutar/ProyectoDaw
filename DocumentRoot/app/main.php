@@ -52,7 +52,7 @@ session_start();
             <li><a href="#"><i class="fas fa-chart-bar"></i> Pedidos</a></li>
             <li><a href="#"><i class="fas fa-users"></i> Productos</a></li>
             <li><a href="#"><i class="fas fa-cog"></i> Reclamaciones</a></li>
-            <li><a href="traducciones.php"><i class="fas fa-cog"></i>Traducciones</a></li>
+            <li><a href="controladortraducciones.php"><i class="fas fa-cog"></i>Traducciones</a></li>
         </ul>
         <section class="logout">
             <a href="kill.php"><i class="fas fa-cog"></i> LOG OUT</a>

@@ -1,7 +1,3 @@
-<?php
-session_start();
-?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -40,7 +36,7 @@ session_start();
     </style>
 </head>
 <body>
-<div class="sidebar sticky-top">
+<!-- <div class="sidebar sticky-top">
         <h1>Backoffice</h1>
         <div class="info-menu-lateral">
             <img class="logo-menu-lateral" src="https://www.logomaker.com/api/main/images/1j+ojFVDOMkX9Wytexe43D6kh...OJqBBPmhrFwXs1M3EMoAJtliklh...Rs9...8+ " alt="Logo de la empresa" width="95" height="57">
@@ -52,28 +48,59 @@ session_start();
             <li><a href="#"><i class="fas fa-chart-bar"></i> Pedidos</a></li>
             <li><a href="#"><i class="fas fa-users"></i> Productos</a></li>
             <li><a href="#"><i class="fas fa-cog"></i> Reclamaciones</a></li>
-            <li><a href="cms.php"><i class="fas fa-cog"></i>Traducciones</a></li>
+            <li><a href="controladortraducciones.php"><i class="fas fa-cog"></i>Traducciones</a></li>
         </ul>
         <section class="logout">
             <a href="kill.php"><i class="fas fa-cog"></i> LOG OUT</a>
 
         </section>
+    </div> -->
+    <div class="traducciones" style="margin-left: 20%">
+    <h1>Lista de Traducciones</h1>
+    
+    <form method="POST" action="controladortraducciones.php">
+        <label for="idioma">Filtrar por Idioma:</label>
+        <select name="idioma" id="idioma">
+            <option value="">Todos los idiomas</option>
+            <option value="ESP">Español</option>
+            <option value="ENG">Inglés</option>
+            <option value="CAT">Català</option>
+            <!-- Agrega más opciones para otros idiomas según tu base de datos -->
+        </select>
+        <input type="submit" value="Filtrar">
+    </form>
+    
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Texto Original</th>
+            <th>Idioma</th>
+            <th>Traducción</th>
+            <th>Actualizar</th>
+        </tr>
+        <?php
+        if(isset($traducciones)){
+        foreach ($traducciones as $traduccion) {
+            echo "<tr>";
+            echo "<td>{$traduccion['ID']}</td>";
+            echo "<td>{$traduccion['Traduccion']}</td>";
+            echo "<td>{$traduccion['TextoOriginal']}</td>";
+            echo "<td>{$traduccion['Idioma']}</td>";
+            echo "<td>
+                    <form method='POST' action='controladortraducciones.php'>
+                        <input type='text' name='nueva_traduccion' placeholder='Nueva traducción'>
+                        <input type='hidden' name='traduccion_id' value='{$traduccion['ID']}'>
+                        <input type='submit' value='Actualizar'>
+                    </form>
+                </td>";
+            echo "</tr>";
+        }
+    }
+        ?>
+    </table>
+
+
     </div>
-    <section class="cms">
-        <div class="contenido" style="margin-left: 20%">
-        <div class="header"><h1>Esto es el título</h1></div>
-        <form class="form-cms" action="insertarcms.php" method="post">
-        <h3>Clau api picanova</h3>    
-        <input type="text" id="api_picanova" value="<?php $api_picanova?>" name="api_picanova"></input>
-        <h3>Clau api upscale</h3>
-        <input type="text" id="api_upscale" name="api_upscale"></input>   
-        <h3>Clau api dall-e</h3>
-        <input type="text" id="api_dalle" name="api_dalle"></input>
-        <button href="#" class="submit" id="actualizar-cms">Actualizar valores</button>  
-        </div>
-
-
-    </section>
 
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
