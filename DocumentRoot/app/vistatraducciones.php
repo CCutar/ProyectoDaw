@@ -82,19 +82,20 @@
         if(isset($traducciones)){
         foreach ($traducciones as $traduccion) {
             echo "<tr>";
-            echo "<td>{$traduccion['ID']}</td>";
+            echo "<td>{$traduccion['TraduccionIdiomaID']}</td>";
             echo "<td>{$traduccion['Traduccion']}</td>";
             echo "<td>{$traduccion['TextoOriginal']}</td>";
             echo "<td>{$traduccion['Idioma']}</td>";
             echo "<td>
                     <form method='POST' action='controladortraducciones.php'>
                         <input type='text' name='nueva_traduccion' placeholder='Nueva traducción'>
-                        <input type='hidden' name='traduccion_id' value='{$traduccion['ID']}'>
+                        <input type='hidden' name='traduccion_id' value='{$traduccion['TraduccionIdiomaID']}'>
                         <input type='submit' value='Actualizar'>
                     </form>
                 </td>";
             echo "</tr>";
         }
+        
     }
         ?>
     </table>

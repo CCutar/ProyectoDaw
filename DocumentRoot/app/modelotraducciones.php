@@ -20,7 +20,7 @@ class Traducciones {
         $db_host = 'mariadb';
         $db_user = 'super';
         $db_pass = 'super';
-        $db_name = 'testdatabase';
+        $db_name = 'testdatabase2';
     
         try {
             $pdo = new PDO("mysql:host=$db_host;dbname=$db_name", $db_user, $db_pass);
