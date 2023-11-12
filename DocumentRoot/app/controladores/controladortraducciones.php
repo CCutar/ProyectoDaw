@@ -2,7 +2,7 @@
 
 session_start();
 
-include 'modelotraducciones.php';
+include '../modelos/modelotraducciones.php';
 
 if (($_SERVER['REQUEST_METHOD'] === 'POST')) {
     
@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 }
 
-include 'vistatraducciones.php';
+include '../vistas/vistatraducciones.php';
 
 
 

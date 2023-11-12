@@ -2,6 +2,7 @@ version: '3.8'
 
 services:
    php-httpd:
+      container_name: php
       build:
          context: ./DocumentRoot/app
          dockerfile: Dockerfilephp
@@ -12,6 +13,7 @@ services:
          - "./DocumentRoot/app/:/var/www/html"
          
    mariadb:
+      container_name: mariadb
       image: mariadb:10.5.2
       ports:
          - "3306:3306"
@@ -28,6 +30,7 @@ services:
          MYSQL_PASSWORD: 'super'
 
    phpmyadmin:
+      container_name: phpmyadmin
       image: phpmyadmin/phpmyadmin
       links: 
          - mariadb:db
@@ -45,6 +48,6 @@ services:
     ports:
       - '8000:8000'
     volumes:
-      - ./DocumentRoot/app:/app
+      - ./DocumentRoot/api:/app
          
   
