@@ -1,7 +1,3 @@
-<?php
-session_start();
-?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -48,37 +44,53 @@ session_start();
             <a>ROL</a>
         </div>
         <ul>
-            <li><a href="main.php"><i class="fas fa-home"></i> Inicio</a></li>
+        <li><a href="../main.php"><i class="fas fa-home"></i> Inicio</a></li>
             <li><a href="#"><i class="fas fa-chart-bar"></i> Pedidos</a></li>
             <li><a href="#"><i class="fas fa-users"></i> Productos</a></li>
-            <li><a href="controladores/controladorcms.php"><i class="fas fa-cog"></i>CMS</a></li>
-            <li><a href="controladores/controladortraducciones.php"><i class="fas fa-cog"></i>Traducciones</a></li>
+            <li><a href="../controladores/controladorcms.php"><i class="fas fa-cog"></i> CMS</a></li>
+            <li><a href="../controladores/controladortraducciones.php"><i class="fas fa-cog"></i>Traducciones</a></li>
         </ul>
         <section class="logout">
-            <a href="kill.php"><i class="fas fa-cog"></i> LOG OUT</a>
+            <a href="../kill.php"><i class="fas fa-cog"></i> LOG OUT</a>
 
         </section>
     </div>
-
-
-    <!-- Contenido principal -->
-    <div class="content" style="margin-left: 20%;">
-        <div class="grid-container">
+    <div class="cms" style="margin-left: 36%">
+    <h1>Lista de CMS</h1>
     
-            <div class="top-left">
-                <h1>Esquina izquierda top </h1>
-            </div>
-            <div class="top-right">
-                <h1>Esquina derecha top </h1>
-            </div>
-            <div class="bottom-left">
-                <h1>Esquina izquierda bot </h1>
-            </div>
-            <div class="bottom-right">
-                <h1>Esquina derecha bot </h1>
-            </div>
-        </div>
+    <table border="1">
+        <tr>
+            <th>id</th>
+            <th>politica</th>
+            <th>Valor politica</th>
+            <th>Actualizar valores</th>
+            
+        </tr>
+
+        <?php
+        if(isset($cms)){
+            foreach ($cms as $cms) {
+                echo "<tr>";
+                echo "<td>{$cms['id']}</td>";
+                echo "<td>{$cms['politica']}</td>";
+                echo "<td>{$cms['valor_politica']}</td>";
+                echo "<td>
+                        <form method='POST' action='../controladores/controladorcms.php'>
+                            <textarea name='nuevo_cms' placeholder='Nueva traducción'></textarea>
+                            <input type='hidden' name='cms_id' value='{$cms['id']}'>
+                            <input type='submit' value='Actualizar'>
+                        </form>
+                    </td>";
+                echo "</tr>";
+            }
+        }
+        ?>
+
+    </table>
+
+
     </div>
+
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
 </html>

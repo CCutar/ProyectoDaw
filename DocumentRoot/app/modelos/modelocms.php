@@ -4,15 +4,15 @@ class Cms {
     public $id;
     public $politica;
     public $valor_politica;
-    public $idioma;
+
     
 
-    public function __construct ($id, $politica ,$valor_politica, $idioma) {
+    public function __construct ($id, $politica ,$valor_politica) {
 
         $this->id = $id;
         $this->politica = $politica;
         $this->valor_politica = $valor_politica;
-        $this->idiomas = $idioma;
+        
     
     }
 
@@ -68,7 +68,29 @@ class Cms {
 
     // }
 
-    public static function mostrarCmsPorPolitica($idioma) {
+    public function actualizarCms() {
+        
+        try {
+            
+            $query = "UPDATE `cms` 
+            SET valor_politica = :valorpolitica
+            WHERE id = :idcms ";
+            $pdo = self::crearConexion();
+    
+            $stmt = $pdo->prepare($query);
+            $stmt->bindParam(':idcms', $this->id, PDO::PARAM_STR);                
+            $stmt->bindParam(':valorpolitica', $this->valor_politica, PDO::PARAM_STR);                
+            $stmt->execute();
+            
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+
+
+    }
+    
+    
+    public static function mostrarCmsPorGrupo($idioma) {
         
         try {
             

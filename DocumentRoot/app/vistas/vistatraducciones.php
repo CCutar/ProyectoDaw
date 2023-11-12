@@ -2,8 +2,8 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=, initial-scale=1.0">
-    <link rel="stylesheet" href="sidebar.css">
+    <meta name="viewport" initial-scale=1.0">
+    <link rel="stylesheet" href="../estilos/sidebar.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>Document</title>
     <style>
@@ -44,21 +44,21 @@
             <a>ROL</a>
         </div>
         <ul>
-            <li><a href="main.php"><i class="fas fa-home"></i> Inicio</a></li>
+            <li><a href="../main.php"><i class="fas fa-home"></i> Inicio</a></li>
             <li><a href="#"><i class="fas fa-chart-bar"></i> Pedidos</a></li>
             <li><a href="#"><i class="fas fa-users"></i> Productos</a></li>
-            <li><a href="#"><i class="fas fa-cog"></i> Reclamaciones</a></li>
+            <li><a href="controladorcms.php"><i class="fas fa-cog"></i> CMS</a></li>
             <li><a href="controladortraducciones.php"><i class="fas fa-cog"></i>Traducciones</a></li>
         </ul>
         <section class="logout">
-            <a href="kill.php"><i class="fas fa-cog"></i> LOG OUT</a>
+            <a href="../kill.php"><i class="fas fa-cog"></i> LOG OUT</a>
 
         </section>
     </div>
     <div class="traducciones" style="margin-left: 36%">
     <h1>Lista de Traducciones</h1>
     
-    <form method="POST" action="controladortraducciones.php">
+    <form method="POST" action="../controladores/controladortraducciones.php">
         <label for="idioma">Filtrar por Idioma:</label>
         <select name="idioma" id="idioma">
             <option value="">Todos los idiomas</option>
@@ -87,7 +87,7 @@
             echo "<td>{$traduccion['TextoOriginal']}</td>";
             echo "<td>{$traduccion['Idioma']}</td>";
             echo "<td>
-                    <form method='POST' action='controladortraducciones.php'>
+                    <form method='POST' action='../controladores/controladortraducciones.php'>
                         <input type='text' name='nueva_traduccion' placeholder='Nueva traducción'>
                         <input type='hidden' name='traduccion_id' value='{$traduccion['TraduccionIdiomaID']}'>
                         <input type='submit' value='Actualizar'>
@@ -95,7 +95,7 @@
                 </td>";
             echo "</tr>";
         }
-        
+
     }
         ?>
     </table>
