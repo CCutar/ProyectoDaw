@@ -14,13 +14,14 @@ class PreferenceManager {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function updatePreferenceValue($id, $nuevoValor) {
-        $query = "UPDATE preferencias SET valor = :nuevoValor WHERE id = :id";
+    public function updatePreferenceValueByName($nombre, $nuevoValor) {
+        $query = "UPDATE preferencias SET valor = :nuevoValor WHERE preferencia = :nombre";
         $stmt = $this->pdo->prepare($query);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->bindParam(':nombre', $nombre, PDO::PARAM_STR);
         $stmt->bindParam(':nuevoValor', $nuevoValor, PDO::PARAM_STR);
-
+    
         return $stmt->execute();
     }
+    
 }
 ?>

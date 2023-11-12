@@ -50,8 +50,8 @@
             <li><a href="#"><i class="fas fa-cog"></i> Estadisticas</a></li>
             <li><a href="#"><i class="fas fa-cog"></i> Paises</a></li>
             <li><a href="#"><i class="fas fa-cog"></i> Productos/Margen</a></li>
-            <li><a href="preferencias.php"><i class="fas fa-cog"></i> Preferencias</a></li>
-            <li><a href="#"><i class="fas fa-cog"></i> Usuarios</a></li>
+            <li><a href="vistaPreferencias.php"><i class="fas fa-cog"></i> Preferencias</a></li>
+            <li><a href="vistaUsuarios.php"><i class="fas fa-cog"></i> Usuarios</a></li>
         </ul>
         <section class="logout">
             <a href="kill.php"><i class="fas fa-cog"></i> LOG OUT</a>

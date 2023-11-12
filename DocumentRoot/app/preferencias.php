@@ -6,10 +6,10 @@ include('PreferenceManager.php');
 $manager = new PreferenceManager($pdo);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $id = $_POST['id'];
+    $preferencia = isset($_POST['preferencia']) ? $_POST['preferencia'] : null;
 
-    // Verifica si la preferencia es "logoApp" (ID 6)
-    if ($id === '6') {
+    // Verifica si la preferencia es "logoApp"
+    if ($preferencia === 'logoApp') {
         if (isset($_FILES['foto']) && $_FILES['foto']['error'] == 0) {
             // Configura las validaciones para el archivo
             $allowedExtensions = ["jpeg", "jpg"];
@@ -28,8 +28,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     move_uploaded_file($file['tmp_name'], $rutaArchivo);
                 
                     // Actualiza la base de datos con la nueva ruta
-                    if ($manager->updatePreferenceValue($id, $rutaArchivo)) {
+                    if ($manager->updatePreferenceValueByName('logoApp', $rutaArchivo)) {
                         echo "Imagen subida y ruta guardada en la base de datos correctamente.";
+                        header("Location: vistaPreferencias.php");
                     } else {
                         echo "Error al actualizar la ruta en la base de datos.";
                     }
@@ -45,9 +46,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         // Para las preferencias que no son "logoApp," verifica si se proporcionó un nuevo valor numérico para actualizar
         $nuevoValor = $_POST['nuevo_valor'];
+        if ($preferencia != 'logoApp' && empty($nuevoValor)) {
+            header("Location: vistaPreferencias.php");
+            // or redirect back to the form with an error message
+            exit();
+        }        
         if (is_numeric($nuevoValor)) {
-            if ($manager->updatePreferenceValue($id, $nuevoValor)) {
-                echo "Registro actualizado con éxito.";
+            if ($manager->updatePreferenceValueByName($preferencia, $nuevoValor)) {
+                header("Location: vistaPreferencias.php");
             } else {
                 echo "Error al actualizar el registro.";
             }
@@ -58,40 +64,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 $result = $manager->getPreferences();
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Artee</title>
-</head>
-<body>
-    <h1>Actualizar Valores</h1>
-    <table>
-        <tr>
-            <th>Preferencia</th>
-            <th>Valor Actual</th>
-            <th>Actualizar</th>
-        </tr>
-        <?php
-        foreach ($result as $row) {
-            echo "<tr>";
-            echo "<td>" . $row['preferencia'] . "</td>";
-            echo '<td>' . $row['valor'] . '</td>';
-            echo '<td>
-                    <form action="preferencias.php" method="post" enctype="multipart/form-data">
-                        <input type="hidden" name="id" value="' . $row['id'] . '">';
-            
-            if ($row['preferencia'] == 'logoApp') {
-                echo '<input type="file" name="foto" accept="image/jpeg, image/jpg" required>';
-            } else {
-                echo '<input type="text" name="nuevo_valor" placeholder="Nuevo Valor" required>';
-            }
-            
-            echo '<input type="submit" value="Actualizar">
-                    </form>
-                  </td>';
-            echo "</tr>";
-        }
-        ?>
-    </table>
-</body>
-</html>
