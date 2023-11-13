@@ -94,22 +94,22 @@ session_start();
 <div class="sidebar">
         <h1>Backoffice</h1>
         <div class="info-menu-lateral">
-            <img class="logo-menu-lateral" src="https://www.logomaker.com/api/main/images/1j+ojFVDOMkX9Wytexe43D6kh...OJqBBPmhrFwXs1M3EMoAJtliklh...Rs9...8+ " alt="Logo de la empresa" width="95" height="57">
-            <a>Nombre</a>
+            <?php echo $_SESSION["username"];?>
             <a>ROL</a>
         </div>
         <ul>
-            <li><a href="main.php"><i class="fas fa-home"></i> Inicio</a></li>
-            <li><a href="estadisticas.php"><i class="fas fa-chart-bar"></i>Estadisticas</a></li>
-            <li><a href="pageProduct.php"><i class="fas fa-users"></i> Productos</a></li>
-            <li><a href="#"><i class="fas fa-cog"></i> Reclamaciones</a></li>
-            <li><a href="#"><i class="fas fa-cog"></i> Usuarios</a></li>
+            <li><a href="main.php"><i class="fas fa-home"></i> HOME</a></li>
+            <li><a href="estadisticas.php"><i class="fas fa-chart-bar"></i> ESTADÍSTICAS</a></li>
+            <li><a href="pageProduct.php"><i class="fas fa-users"></i>PRODUCTOS</a></li>
+            <li><a href="#"><i class="fas fa-cog"></i> TRADUCCIONES</a></li>
+            <li><a href="#"><i class="fas fa-cog"></i> USUARIOS</a></li>
+            <li><a href="#"><i class="fas fa-cog"></i> PREFERENCIAS</a></li>
         </ul>
         <section class="logout">
             <a href="kill.php"><i class="fas fa-cog"></i> LOG OUT</a>
 
         </section>
-    </div>
+</div>
     <div class="container">
         <h2>Productos más vendidos</h2>
         <table>

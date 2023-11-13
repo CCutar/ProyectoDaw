@@ -20,7 +20,7 @@ services:
       restart: always
       environment:
          TZ: "Europe/Madrid"
-         MYSQL_ROOT_HOST: "%"
+         
          MYSQL_ROOT_PASSWORD: "super"
          MYSQL_ALLOW_EMPTY_PASSWORD: "no"
          MYSQL_DATABASE: 'testdatabase'
