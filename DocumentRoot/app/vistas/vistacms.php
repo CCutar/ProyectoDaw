@@ -2,9 +2,12 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=, initial-scale=1.0">
+    <meta name="viewport" initial-scale=1.0">
     <link rel="stylesheet" href="../estilos/sidebar.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/validate.js/0.13.1/validate.min.js"></script>
+    <script src="../js/validacioncms.js"></script>
+
     <title>Document</title>
     <style>
          /* Estilo personalizado para la barra de navegación */
@@ -60,9 +63,9 @@
     
     <table border="1">
         <tr>
-            <th>id</th>
-            <th>politica</th>
-            <th>Valor politica</th>
+            <th>ID</th>
+            <th>Pàgina</th>
+            <th>Contenido pàgina</th>
             <th>Actualizar valores</th>
             
         </tr>
@@ -75,10 +78,17 @@
                 echo "<td>{$cms['politica']}</td>";
                 echo "<td>{$cms['valor_politica']}</td>";
                 echo "<td>
-                        <form method='POST' action='../controladores/controladorcms.php'>
-                            <textarea name='nuevo_cms' placeholder='Nueva traducción'></textarea>
-                            <input type='hidden' name='cms_id' value='{$cms['id']}'>
-                            <input type='submit' value='Actualizar'>
+                        <form id='formulariocms' name='formulario_cms' method='POST' action='../controladores/controladorcms.php'>
+                            <textarea id='nuevocms' name='nuevo_cms' placeholder='Nueva traducción'></textarea>
+                            <input type='hidden' name='cms_id' value='{$cms['id']}'><br>
+                            <span style='color: red' id='errorcms_id' class='error-message'>";
+
+                if (isset($errorcms[$cms['id']]))
+                    echo $errorcms[$cms['id']];
+
+                echo "</span><br>
+                            <input id='submitcms' type='submit' value='Actualizar'>
+                            
                         </form>
                     </td>";
                 echo "</tr>";
