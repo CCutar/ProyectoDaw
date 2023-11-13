@@ -29,12 +29,12 @@ document.addEventListener('DOMContentLoaded', function () {
             if (nombreValue === '') {
                 nombreError.textContent = 'Este campo no puede estar vacío';
             
-            }else if (contieneScript(nombreInput)) {
-                document.getElementById('submitcms').disabled = true;
+            }else if (contieneScript(nombreValue)) {
+                e.preventDefault()
                 nombreError.textContent = 'No se permiten etiquetas <script> en el campo';
             }else {
+                e.preventDefault
                 nombreError.textContent = '';
-                document.getElementById('submitcms').disabled = false;
 
             }
         });
