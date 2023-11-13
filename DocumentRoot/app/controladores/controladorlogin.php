@@ -1,10 +1,10 @@
 <?php
-    
+include("../modelos/UserManager.php");
 class Login{
     private $user;
 
     public function __construct() {
-        $this->user = new User();
+        $this->user = new AdministradorUsuarios();
     }
 
     public function processLogin($email, $password) {
@@ -39,7 +39,7 @@ class Login{
 if(isset($_POST['email'])){
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = htmlspecialchars($_POST['email']);
-    $password = htmlspecialchars($_POST['pass']);
+    $password = htmlspecialchars($_POST['password']);
 
     //creo objeto de Login controller que crea un objeto basado en la clase usuario
     $login = new Login();

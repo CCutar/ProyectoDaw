@@ -1,10 +1,34 @@
 <?php
-
+include("../modelos/database.php");
 class AdministradorUsuarios {
     private $pdo;
+    private $table_name = "usuario";
+    private $id;
+    private $email;
+    private $es_admin;
+    private $userName;
 
-    public function __construct($pdo) {
-        $this->pdo = $pdo;
+    //conexión con la clase Database
+    public function __construct() {
+        $pdo = new Database();
+        $this->pdo = $pdo->connect();
+    }
+
+    //getters
+    public function getId(){
+        return $this->id; 
+    }
+
+    public function getEmail(){
+        return $this->email; 
+    }
+
+    public function getEsAdmin(){
+        return $this->es_admin; 
+    }
+
+    public function getUsername(){
+        return $this->userName;
     }
 
     public function obtenerTodosLosUsuarios() {
@@ -48,6 +72,51 @@ class AdministradorUsuarios {
         $stmt->bindParam(':idUsuario', $idUsuario, PDO::PARAM_INT);
         return $stmt->execute();
     }
-}
 
+    //function login 
+    public function login($email, $password)
+    {
+        try {
+            $query = "SELECT id, email, es_admin, username FROM " . $this->table_name . " 
+                      WHERE email = :email AND contrasena = :contrasena";
+
+            $stmt = $this->pdo->prepare($query);
+
+            $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':contrasena', $password);
+
+            $stmt->execute();
+
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            //si encuentro al usuario en la base de datos, guardo los datos en mi objeto $user 
+            //hash if(password_verify($password,$user['password']))
+            if ($user) {
+                $this->id = $user['id'];
+                $this->email = $user['email'];
+                return true; 
+            } else {
+                return false; //el login no es correcto
+            }
+        } catch (PDOException $e) {
+            echo "Error al realizar el inicio de sesión " . $e->getMessage();
+            return false; // Error al realizar el inicio de sesión
+        }
+    }
+
+    public function passwordRecovery($email){
+        try {
+            $query= "SELECT id, email, es_admin, username FROM " . $this->table_name . "
+            WHERE email = :email";
+            $stmt = $this->pdo->prepare($query);
+            $stmt->bindParam(':email', $email);
+            $stmt->execute();
+            return true;
+            } catch (\Throwable $th) {
+            //throw $th;
+        }
+    }
+
+
+}
 ?>
