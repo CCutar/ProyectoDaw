@@ -1,3 +1,28 @@
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 20%;
+    background-color: #343a40;
+    padding: 20px;
+    color: #fff;
+}
+
+/* Estilo para los íconos de FontAwesome (debes incluir FontAwesome en tu proyecto) */
+.sidebar i {
+    margin-right: 10px;
+}
+
+/* Estilo para los elementos del menú */
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+}
 .logout{
     margin-top: 80%;
 }

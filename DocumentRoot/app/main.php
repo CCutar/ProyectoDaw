@@ -7,7 +7,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=, initial-scale=1.0">
-    <link rel="stylesheet" href="sidebar.css">
+    <link rel="stylesheet" href="../estilos/sidebar.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>Document</title>
     <style>
@@ -51,8 +51,8 @@ session_start();
             <li><a href="main.php"><i class="fas fa-home"></i> Inicio</a></li>
             <li><a href="#"><i class="fas fa-chart-bar"></i> Pedidos</a></li>
             <li><a href="#"><i class="fas fa-users"></i> Productos</a></li>
-            <li><a href="#"><i class="fas fa-cog"></i> Reclamaciones</a></li>
-            <li><a href="#"><i class="fas fa-cog"></i> Usuarios</a></li>
+            <li><a href="controladores/controladorcms.php"><i class="fas fa-cog"></i>CMS</a></li>
+            <li><a href="controladores/controladortraducciones.php"><i class="fas fa-cog"></i>Traducciones</a></li>
         </ul>
         <section class="logout">
             <a href="kill.php"><i class="fas fa-cog"></i> LOG OUT</a>
