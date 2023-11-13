@@ -1,15 +1,12 @@
 <?php
-include('preferencias.php');
+include('../controladores/preferencias.php');
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <title>Artee</title>
-    <style>
-        /* Add your CSS styling here */
-    </style>
     <script>
         // JavaScript validations
         function validateForm() {
@@ -36,11 +33,13 @@ include('preferencias.php');
     </script>
 </head>
 <body>
-    <?php include('Includes/sidebar.php'); ?>
+    <?php include('../includes/sidebar.php'); ?>
 
-    <div class="content">
-        <h1>Actualizar Valores</h1>
-        <div class="table-responsive">
+    <div class="content" style="width:80%; margin-left:20%; display:flex; flex-direction:column;">
+        <div class="titulo">
+            <h1>Actualizar Valores</h1>
+        </div>
+        <div class="table-responsive" style="margin-top:3%;"> 
             <table class="table">
                 <!-- Your table content goes here -->
                 <thead>
@@ -57,7 +56,7 @@ include('preferencias.php');
                         echo "<td>" . htmlspecialchars($row['preferencia']) . "</td>";
                         echo '<td>' . htmlspecialchars($row['valor']) . '</td>';
                         echo '<td>
-                                <form name="preferenciaForm" action="preferencias.php" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
+                                <form name="preferenciaForm" action="../controladores/preferencias.php" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
                                     <input type="hidden" name="preferencia" value="' . htmlspecialchars($row['preferencia']) . '">';
 
                         if ($row['preferencia'] == 'logoApp') {

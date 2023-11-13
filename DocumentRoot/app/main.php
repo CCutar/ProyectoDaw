@@ -3,7 +3,7 @@ session_start();
 ?>
 
 <?php 
-include ('Includes/sidebar.php');
+include ('/includes/sidebar.php');
 ?>
 
     <!-- Contenido principal -->

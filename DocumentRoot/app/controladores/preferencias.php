@@ -1,7 +1,7 @@
 <?php
 session_start();
-include('db.php');
-include('PreferenceManager.php');
+include('../db.php');
+include('../modelos/PreferenceManager.php');
 
 $manager = new PreferenceManager($pdo);
 
@@ -24,13 +24,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 // Verifica si el tamaño del archivo está dentro del límite permitido
                 if ($file['size'] <= $maxFileSize) {
                     // Mueve el archivo a la ubicación de almacenamiento
-                    $rutaArchivo = 'img/' . $file['name']; // Reemplaza con la ruta adecuada
+                    $rutaArchivo = '../img/' . $file['name']; // Reemplaza con la ruta adecuada
                     move_uploaded_file($file['tmp_name'], $rutaArchivo);
                 
                     // Actualiza la base de datos con la nueva ruta
                     if ($manager->updatePreferenceValueByName('logoApp', $rutaArchivo)) {
+                        header("Location: ../vistas/vistaPreferencias.php");
                         echo "Imagen subida y ruta guardada en la base de datos correctamente.";
-                        header("Location: vistaPreferencias.php");
                     } else {
                         echo "Error al actualizar la ruta en la base de datos.";
                     }
@@ -47,13 +47,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Para las preferencias que no son "logoApp," verifica si se proporcionó un nuevo valor numérico para actualizar
         $nuevoValor = $_POST['nuevo_valor'];
         if ($preferencia != 'logoApp' && empty($nuevoValor)) {
-            header("Location: vistaPreferencias.php");
+            header("Location: ../vistas/vistaPreferencias.php");
             // or redirect back to the form with an error message
             exit();
         }        
         if (is_numeric($nuevoValor)) {
             if ($manager->updatePreferenceValueByName($preferencia, $nuevoValor)) {
-                header("Location: vistaPreferencias.php");
+                header("Location: ../vistas/vistaPreferencias.php");
             } else {
                 echo "Error al actualizar el registro.";
             }
