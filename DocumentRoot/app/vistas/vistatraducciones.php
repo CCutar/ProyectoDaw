@@ -5,6 +5,7 @@
     <meta name="viewport" initial-scale=1.0">
     <link rel="stylesheet" href="../estilos/sidebar.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="../js/validaciontraducciones.js" rel="script"></script>
     <title>Document</title>
     <style>
          /* Estilo personalizado para la barra de navegación */
@@ -87,9 +88,10 @@
             echo "<td>{$traduccion['TextoOriginal']}</td>";
             echo "<td>{$traduccion['Idioma']}</td>";
             echo "<td>
-                    <form method='POST' action='../controladores/controladortraducciones.php'>
-                        <input type='text' name='nueva_traduccion' placeholder='Nueva traducción'>
+                    <form method='POST' name='form_traducciones' action='../controladores/controladortraducciones.php'>
+                        <input type='text' id='nuevatraduccion' name='nueva_traduccion' placeholder='Nueva traducción'>
                         <input type='hidden' name='traduccion_id' value='{$traduccion['TraduccionIdiomaID']}'>
+                        <span style='color: red' id='voidError' class='error-message'></span><br>
                         <input type='submit' value='Actualizar'>
                     </form>
                 </td>";
