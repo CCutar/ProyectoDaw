@@ -26,7 +26,7 @@ class Login{
     }
 
     private function redirectUser() {
-        include("../main.php");
+        header("Location: ../main.php");
         exit;
     }
 
