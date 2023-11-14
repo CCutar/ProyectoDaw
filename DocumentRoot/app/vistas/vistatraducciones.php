@@ -5,7 +5,7 @@
     <meta name="viewport" initial-scale=1.0">
     <link rel="stylesheet" href="../estilos/sidebar.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- <script src="../js/validaciontraducciones.js" rel="script"></script> -->
+    <script src="../js/validaciontraducciones.js" rel="script"></script>
     <title>Document</title>
     <style>
          /* Estilo personalizado para la barra de navegación */
