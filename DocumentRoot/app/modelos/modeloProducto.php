@@ -15,6 +15,27 @@
             
         }
         
+        //getters
+        public function getId() {
+            return $this->id;
+        }
+    
+        public function getNombreProducto() {
+            return $this->nombre_producto;
+        }
+    
+        public function getDescripcionProducto() {
+            return $this->descripcion_producto;
+        }
+    
+        public function getPrecio() {
+            return $this->precio;
+        }
+    
+        public function getMargenPorcentaje() {
+            return $this->margen_porcentaje;
+        }
+
 
         public function getProducts() {
             try {
@@ -31,7 +52,8 @@
 
         public function updateProduct($productoID){
             try {
-                $query = "SELECT * FROM " . $this->table_name;
+            $query = "INSERT INTO producto ( nombre_producto, decripcion_producto, precio, margen_porcentaje) 
+              VALUES (:id, :nombre_producto, :decripcion_producto, :precio, :margen_porcentaje)";
                 $stmt = $this->pdo->prepare($query);
                 $stmt->execute();
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -60,16 +82,16 @@
         public function insertProduct($nombre_producto, $descripcion_producto, $precio, $margen_porcentaje) {
             try {
                 // Preparar la consulta SQL
-                $query = "INSERT INTO productos (nombre_producto, descripcion_producto, precio, margen_porcentaje) VALUES (:nombre, :descripcion, :precio, :margen)";
+                $query = "INSERT INTO producto (nombre_producto, descripcion_producto, precio, margen_porcentaje) VALUES (:nombre, :descripcion, :precio, :margen)";
     
                 // Preparar la sentencia
                 $stmt = $this->pdo->prepare($query);
     
                 // Asignar valores a los parámetros
                 $stmt->bindParam(':nombre', $nombre_producto);
-                $stmt->bindParam(':descripcion', $descripcion_producto);
+                $stmt->bindParam(':decripcion_producto', $descripcion_producto);
                 $stmt->bindParam(':precio', $precio);
-                $stmt->bindParam(':margen', $margen_porcentaje);
+                $stmt->bindParam(':margen_porcentaje', $margen_porcentaje);
     
                 // Ejecutar la sentencia
                 $stmt->execute();
