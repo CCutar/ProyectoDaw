@@ -1,10 +1,11 @@
 <?php
-include("../modelos/UserManager.php");
-class Login{
+include("../modelos/LoginManager.php");
+class LoginController{
     private $user;
+   
 
     public function __construct() {
-        $this->user = new AdministradorUsuarios();
+        $this->user = new User();
     }
 
     public function processLogin($email, $password) {
@@ -42,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = htmlspecialchars($_POST['password']);
 
     //creo objeto de Login controller que crea un objeto basado en la clase usuario
-    $login = new Login();
+    $login = new LoginController();
     $login->processLogin($email, $password);
 } else {
     echo "Error en la conexión de la base de datos";

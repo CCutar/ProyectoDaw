@@ -104,19 +104,6 @@ class AdministradorUsuarios {
         }
     }
 
-    public function passwordRecovery($email){
-        try {
-            $query= "SELECT id, email, es_admin, username FROM " . $this->table_name . "
-            WHERE email = :email";
-            $stmt = $this->pdo->prepare($query);
-            $stmt->bindParam(':email', $email);
-            $stmt->execute();
-            return true;
-            } catch (\Throwable $th) {
-            //throw $th;
-        }
-    }
-
 
 }
 ?>

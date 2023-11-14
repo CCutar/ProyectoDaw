@@ -20,7 +20,7 @@
     <img src="./img/logoArtee.png" alt="Logo Artee" class="rounded-circle mb4"  width="100" height="100">
   </div>  
 </header>
-<?php session_start()?>
+
 <main class="form-signin">
 
       <div id="boxLoginForm">
