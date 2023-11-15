@@ -41,7 +41,7 @@ def get_info_picanova():
         
 def get_api_key(api_key_header: str = Security(api_key_header)) -> str:
     if api_key_header in get_key_api():
-        return api_key_header
+        return api_key_header   
     raise HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
         detail="Invalid or missing API Key",
@@ -56,13 +56,13 @@ def get_credentials():
     credentials = base64.b64encode(f"{username}:{password}".encode()).decode()
     return credentials    
     
-@app.get("/protected")
+@app.get("/protected") #Ruta protegida que requiere una API key para acceder.
 def protected_route(api_key: str = Security(get_api_key)):
     # Process the request for authenticated usersresponse = httpx.get(url, headers=custom_headers)
     return {"message": "Access granted!"}
     
 
-@app.get("/peticionotraapi")
+@app.get("/peticionotraapi") #Realiza una solicitud a una API externa (Picanova).
 async def hacer_peticion(api_key: str = Security(get_api_key)):
     # URL de la API externa a la que deseas hacer la solicitud
     url = "https://api.picanova.com/api/beta/countries"
@@ -84,7 +84,7 @@ async def hacer_peticion(api_key: str = Security(get_api_key)):
             # Maneja los errores si la solicitud no fue exitosa
             return {"error": "No se pudo realizar la solicitud a la API externa"}
         
-@app.get("/consultar_bd")
+@app.get("/consultar_bd") #Consulta una base de datos MySQL.
 async def consultar_bd(api_key: str = Security(get_api_key)):
         
     try:
@@ -109,11 +109,11 @@ async def consultar_bd(api_key: str = Security(get_api_key)):
     except Exception as e:
         return {"error": str(e)}
         
-@app.get("/test")
+@app.get("/test") #Ruta de prueba para verificar el funcionamiento de la API.
 def read_test():
     return {"La API funciona"}
 
-@app.get("/deapiadb")
+@app.get("/deapiadb") #Realiza una solicitud a una API externa y actualiza una base de datos MySQL.
 async def hacer_peticion(api_key: str = Security(get_api_key)):
     # URL de la API externa a la que deseas hacer la solicitud
     try:
@@ -166,7 +166,7 @@ async def hacer_peticion(api_key: str = Security(get_api_key)):
     except Exception as e:
         return {"error": f"Error no manejado: {e}"}
 
-def tarea_medianoche():
+def tarea_medianoche(): #Realiza una solicitud a una API externa y actualiza una base de datos MySQL. Se configura para ejecutarse cada minuto usando la biblioteca schedule.
     try:
         url = "https://api.picanova.com/api/beta/countries"
 
