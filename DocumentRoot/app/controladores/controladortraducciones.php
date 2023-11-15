@@ -34,14 +34,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nuevatraduccionclean = strip_tags($nuevatraduccion);
     if(empty($nuevatraduccion)){    
         $errortraducciones[$idtraduccion] = 'Este campo no puede estar vacío';
-        
-        $traducciones=Traducciones::mostrarTraducciones();
-
-        
+        $traducciones=Traducciones::mostrarTraducciones(); 
     }elseif(strcmp($nuevatraduccion, $nuevatraduccionclean)){
         $errortraducciones[$idtraduccion] = 'No se permiten etiquetas HTML en el campo';
         $traducciones=Traducciones::mostrarTraducciones();
-
     }else{
         $errortraducciones[$idtraduccion] = null;
         $instanciatraduccion = new Traducciones($idtraduccion,null,null,$nuevatraduccion);
