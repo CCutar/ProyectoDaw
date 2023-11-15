@@ -41,13 +41,13 @@ services:
          PMA_USER: super
          PMA_PASSWORD: super
    api:
-    build:
-      context: ./DocumentRoot/api
-      dockerfile: Dockerfileapi
-    container_name: fastapi
-    ports:
-      - '8000:8000'
-    volumes:
-      - ./DocumentRoot/api:/app
+      build:
+         context: ./DocumentRoot/api
+         dockerfile: Dockerfileapi
+      container_name: fastapi
+      ports:
+         - '8000:8000'
+      volumes:
+         - ./DocumentRoot/api:/app
          
   
