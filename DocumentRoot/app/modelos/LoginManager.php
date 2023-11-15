@@ -56,7 +56,7 @@ class User {
             if ($user) {
                 $this->id = $user['id'];
                 $this->email = $user['email'];
-                $this->username = $user['username'];
+                $this->userName = $user['username'];
                 $this->es_admin = $user['es_admin'];
 
                 return true; 
